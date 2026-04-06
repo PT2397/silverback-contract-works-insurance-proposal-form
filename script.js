@@ -18,6 +18,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submitBtn');
   const successOverlay = document.getElementById('successOverlay');
 
+  // ── CURRENCY FORMATTING ────────────────────────────────────
+  // Auto-format all currency inputs with commas as the user types
+  function formatCurrency(value) {
+    // Strip everything except digits and decimal point
+    let cleaned = value.replace(/[^0-9.]/g, '');
+    // Split on decimal
+    const parts = cleaned.split('.');
+    // Add thousand separators to integer part
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    // Rejoin (max 2 decimal places)
+    if (parts.length > 1) {
+      return parts[0] + '.' + parts[1].substring(0, 2);
+    }
+    return parts[0];
+  }
+
+  function parseCurrencyValue(value) {
+    return parseFloat(value.replace(/[^0-9.]/g, '')) || 0;
+  }
+
+  // Attach formatter to all currency inputs
+  document.querySelectorAll('.currency-input input').forEach(input => {
+    input.addEventListener('input', () => {
+      const pos = input.selectionStart;
+      const before = input.value;
+      const formatted = formatCurrency(input.value);
+      input.value = formatted;
+      // Adjust cursor position for added/removed commas
+      const diff = formatted.length - before.length;
+      input.setSelectionRange(pos + diff, pos + diff);
+    });
+
+    // Format on blur to clean up edge cases
+    input.addEventListener('blur', () => {
+      if (input.value) {
+        input.value = formatCurrency(input.value);
+      }
+    });
+  });
+
   // ── FOOTER YEAR ────────────────────────────────────────────
   document.getElementById('footerYear').textContent = new Date().getFullYear();
 
@@ -83,10 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function calcTotal() {
       let sum = 0;
       inputs.forEach(inp => {
-        const val = inp.value.replace(/[^0-9.]/g, '');
-        sum += parseFloat(val) || 0;
+        sum += parseCurrencyValue(inp.value);
       });
-      totalEl.textContent = '$' + sum.toLocaleString('en-AU');
+      totalEl.textContent = '$' + formatCurrency(sum.toFixed(sum % 1 ? 2 : 0));
     }
     inputs.forEach(inp => inp.addEventListener('input', calcTotal));
   }
@@ -307,6 +346,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Collect form data
     const formData = new FormData(form);
+
+    // Format currency values for clean email display (e.g. "$1,500,000")
+    document.querySelectorAll('.currency-input input').forEach(input => {
+      if (input.name && input.value) {
+        const num = parseCurrencyValue(input.value);
+        if (num > 0) {
+          formData.set(input.name, '$' + formatCurrency(num.toFixed(num % 1 ? 2 : 0)));
+        }
+      }
+    });
 
     // Remove large signature data URIs (they may exceed email limits)
     // Instead, add a note that signatures were captured
