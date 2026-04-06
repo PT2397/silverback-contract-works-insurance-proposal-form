@@ -334,31 +334,30 @@ select {
 }
 
 .currency-input::before {
-  content: 'AUD $';
+  content: '$';
   position: absolute;
-  left: 0.6rem;
+  left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
   color: var(--color-text-light);
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   pointer-events: none;
   z-index: 1;
-  white-space: nowrap;
 }
 
 .currency-input input {
-  padding-left: 3.2rem;
+  padding-left: 1.6rem;
 }
 
 /* Compact currency in tables */
 .data-table .currency-input::before {
-  content: '$';
-  font-size: 0.82rem;
+  left: 0.5rem;
+  font-size: 0.85rem;
 }
 
 .data-table .currency-input input {
-  padding-left: 1.4rem;
+  padding-left: 1.3rem;
 }
 
 /* --- Percentage Input Wrapper --- */
