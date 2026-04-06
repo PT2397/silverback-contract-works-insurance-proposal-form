@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silverback Insurance — Construction Insurance Proposal Form</title>
+<style>
+  :root {
+    --navy: #0A2350;
+    --dark-blue: #005199;
+    --med-blue: #0066CC;
+    --light-blue: #D6E8F7;
+    --pale-blue: #EEF4FB;
+    --white: #FFFFFF;
+    --dark-grey: #333333;
+    --med-grey: #666666;
+    --light-grey: #F0F4F8;
+    --border: #B0C4DE;
+    --red: #C62828;
+    --orange-bg: #FFF8E1;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: var(--dark-grey);
+    background: #E8EDF2;
+    line-height: 1.5;
+  }
+
+  .form-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(10,35,80,0.12);
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .form-header {
+    background: var(--white);
+    color: var(--navy);
+    padding: 32px 40px 16px;
+    text-align: center;
+  }
+  .form-header .logo-icon {
+    display: block;
+    margin: 0 auto 10px;
+    width: 120px;
+    height: auto;
+  }
+  .form-header .brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .form-header .credentials {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #6B7B8D;
+    letter-spacing: 0.3px;
+  }
+  .form-title {
+    background: var(--pale-blue);
+    text-align: center;
+    padding: 30px 40px;
+    border-bottom: 3px solid var(--med-blue);
+  }
+  .form-title h1 {
+    font-size: 28px;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .form-title .subtitle {
+    font-size: 14px;
+    color: var(--med-grey);
+  }
+  .form-title .coverages {
+    font-size: 13px;
+    color: var(--med-blue);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  /* IMPORTANT NOTICE */
+  .important-notice {
+    background: var(--orange-bg);
+    border-left: 4px solid #FF8F00;
+    margin: 20px 30px;
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+  }
+  .important-notice strong { color: var(--red); }
+
+  /* FORM BODY */
+  .form-body { padding: 0 30px 30px; }
+
+  /* SECTION HEADERS */
+  .section-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 6px 6px 0 0;
+    margin-top: 28px;
+    letter-spacing: 0.5px;
+  }
+  .subsection-header {
+    background: var(--light-blue);
+    color: var(--dark-blue);
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 18px;
+    border-radius: 4px;
+    border-left: 4px solid var(--med-blue);
+  }
+
+  /* FIELD TABLES */
+  .field-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+  .field-table td {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .field-table .label-cell {
+    background: var(--light-grey);
+    font-weight: 600;
+    font-size: 13px;
+    width: 38%;
+    color: var(--dark-grey);
+  }
+  .field-table .value-cell {
+    width: 62%;
+  }
+  .field-table .question-cell {
+    width: 75%;
+    font-size: 13px;
+  }
+  .field-table .answer-cell {
+    width: 25%;
+    text-align: center;
+  }
+
+  /* FORM INPUTS */
+  input[type="text"], input[type="email"], input[type="tel"],
+  input[type="url"], input[type="number"], input[type="date"],
+  textarea, select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #CBD5E0;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--dark-grey);
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--med-blue);
+    box-shadow: 0 0 0 3px rgba(0,102,204,0.15);
+  }
+  textarea { resize: vertical; min-height: 60px; }
+  select { cursor: pointer; }
+
+  /* CHECKBOXES AND RADIOS */
+  .checkbox-group, .radio-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .checkbox-group label, .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  input[type="checkbox"], input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--med-blue);
+    cursor: pointer;
+  }
+
+  /* DATA TABLES */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    border: 1px solid var(--border);
+  }
+  .data-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    border: 1px solid #08193A;
+  }
+  .data-table td {
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+  }
+  .data-table td input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    padding: 4px;
+    font-size: 13px;
+  }
+  .data-table td input:focus {
+    background: var(--pale-blue);
+    border-radius: 3px;
+    box-shadow: none;
+  }
+  .data-table .total-row {
+    background: var(--light-blue);
+    font-weight: 700;
+  }
+
+  /* YES/NO RADIO PAIRS */
+  .yn-group {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+  .yn-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  /* SIGNATURE */
+  .signature-section {
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 16px;
+    background: var(--pale-blue);
+  }
+  .signature-section h3 {
+    color: var(--dark-blue);
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+  .sig-canvas-wrap {
+    position: relative;
+    border: 2px dashed var(--border);
+    border-radius: 6px;
+    background: var(--white);
+    margin: 10px 0;
+  }
+  .sig-canvas {
+    width: 100%;
+    height: 120px;
+    cursor: crosshair;
+    display: block;
+    border-radius: 6px;
+  }
+  .sig-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #B0B0B0;
+    font-size: 14px;
+    pointer-events: none;
+  }
+  .sig-actions {
+    text-align: right;
+    margin-top: 6px;
+  }
+  .sig-actions button {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--med-grey);
+  }
+  .sig-actions button:hover {
+    background: var(--light-grey);
+    color: var(--dark-grey);
+  }
+
+  /* BUTTONS */
+  .form-actions {
+    text-align: center;
+    padding: 30px;
+    background: var(--light-grey);
+    border-top: 2px solid var(--border);
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--dark-blue), var(--med-blue));
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(0,102,204,0.3);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 4px 16px rgba(0,102,204,0.4);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--dark-blue);
+    border: 2px solid var(--dark-blue);
+  }
+  .btn-secondary:hover { background: var(--pale-blue); }
+
+  /* FOOTER */
+  .form-footer {
+    text-align: center;
+    padding: 20px 30px;
+    border-top: 3px solid var(--navy);
+    background: var(--light-grey);
+  }
+  .form-footer .company {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--navy);
+  }
+  .form-footer .details {
+    font-size: 11px;
+    color: var(--med-grey);
+    margin-top: 4px;
+  }
+
+  /* NOTE */
+  .note {
+    font-size: 12px;
+    color: var(--med-grey);
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  /* PRINT STYLES */
+  @media print {
+    body { background: white; }
+    .form-container { box-shadow: none; margin: 0; max-width: 100%; }
+    .form-actions { display: none !important; }
+    .no-print { display: none !important; }
+    input, textarea, select { border: 1px solid #ccc !important; }
+    .sig-actions { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+
+  <!-- HEADER -->
+  <div class="form-header">
+    <img class="logo-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYwIDQwIDYwMCA0MzAiPgo8ZGVmcz4KPHJhZGlhbEdyYWRpZW50IGlkPSJnMSIgY3g9IjM2OC41MzQ1IiBjeT0iMjYzLjI0MDMiIHI9IjQ3OC4wMDI1IiBmeD0iNzc2LjQ0MiIgZnk9IjM5Ny43MTU3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIG9mZnNldD0iMC4wOTQyIiBzdG9wLWNvbG9yPSIjMjlBQkUyIi8+CjxzdG9wIG9mZnNldD0iMC4zNjU2IiBzdG9wLWNvbG9yPSIjMUY0NThDIi8+CjxzdG9wIG9mZnNldD0iMC42NDY0IiBzdG9wLWNvbG9yPSIjMjU4MkJGIi8+CjxzdG9wIG9mZnNldD0iMC44NjE3IiBzdG9wLWNvbG9yPSIjMUY0MTg5Ii8+CjwvcmFkaWFsR3JhZGllbnQ+CjxyYWRpYWxHcmFkaWVudCBpZD0iZzIiIGN4PSIzMzAuNDgxNiIgY3k9IjI0MC45Njc4IiByPSI2NjcuMDExNCIgZng9IjE3MS44MDQyIiBmeT0iMzY4Ljg2OTYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRkZGRkZGIi8+CjxzdG9wIG9mZnNldD0iMC4wMTgiIHN0b3AtY29sb3I9IiNFRkVGRUYiLz4KPHN0b3Agb2Zmc2V0PSIwLjExOTUiIHN0b3AtY29sb3I9IiMyOUFCRTIiLz4KPHN0b3Agb2Zmc2V0PSIwLjI4NTYiIHN0b3AtY29sb3I9IiMyMjVGQTMiLz4KPHN0b3Agb2Zmc2V0PSIwLjQ2MDciIHN0b3AtY29sb3I9IiMxRjQyOEEiLz4KPHN0b3Agb2Zmc2V0PSIwLjU4NjgiIHN0b3AtY29sb3I9IiMyNDc4QjciLz4KPHN0b3Agb2Zmc2V0PSIwLjc2OTEiIHN0b3AtY29sb3I9IiMyNTgyQkYiLz4KPHN0b3Agb2Zmc2V0PSIwLjg0MTUiIHN0b3AtY29sb3I9IiNGRkZGRkYiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMUY0NDhDIi8+CjwvcmFkaWFsR3JhZGllbnQ+CjwvZGVmcz4KPHBhdGggZmlsbD0idXJsKCNnMSkiIGQ9Ik01MTAuMiwzMzEuMWMwLTIwLjItMTMuMS0yOC42LTQyLjMtMjguNkgyNTEuM2MtNzQuNTwwLTExOS43LTI0LjMtMTM4LjgtNjMuOWMzMy43LTM5LjcsODIuNi02Ni4xLDEzNy43LTcwIGMtMTkuOCwyLjEtMjkuMyw5LjktMjkuMywyNi43YzAsMjAuMiwxMy43LDI4LDQyLjMsMjhoMjE2LjZjODAuMiwwLDEyOS45LDI0LjgsMTQ0LjcsNzQuNGMtMzQuNCwzNS4zLTgxLjksNTcuOS0xMzQuNiw2MC4xIEM1MDMuNywzNTQuMSw1MTAuMiwzNDUuNyw1MTAuMiwzMzEuMXoiLz4KPHBhdGggZmlsbD0idXJsKCNnMikiIGQ9Ik04OC40LDQ2MS41bC0wLjgsMUg4OUM4OC44LDQ2Mi4yLDg4LjYsNDYxLjksODguNCw0NjEuNXogTTYxOC41LDY0LjRMNTM5LjQsMTY4SDI2My4yIGMtNC43LDAtOSwwLjItMTIuOSwwLjZjLTU1LjEsMy45LTEwNC4xLDMwLjMtMTM3LjcsNzBjLTcuMS0xNC44LTEwLjYtMzEuOC0xMC42LTUwLjRjMC03NSw1MC0xMjMuOCwxNzAuOC0xMjMuOEg2MTguNXogTTYyOS4yLDMzMi4yYzAsODEuNS00OS40LDEzMC40LTE3MC44LDEzMC40SDg5Yy0wLjItMC4zLTAuNC0wLjctMC42LTFsNzguNC0xMDEuM2gzMDEuMWM4LjcsMCwxNi0wLjcsMjItMi40IGM1Mi43LTIuMSwxMDAuMi0yNC43LDEzNC42LTYwLjFDNjI3LjYsMzA4LjIsNjI5LjIsMzE5LjcsNjI5LjIsMzMyLjJ6Ii8+Cjwvc3ZnPg==" alt="Silverback Insurance">
+    <div class="brand-name">SILVERBACK INSURANCE</div>
+    <div class="credentials">
+      C.A.R No: 1283436 &middot; Authorised Representative of Australian Broker Network
+    </div>
+  </div>
+
+  <!-- TITLE -->
+  <div class="form-title">
+    <h1>CONSTRUCTION INSURANCE PROPOSAL FORM</h1>
+    <div class="subtitle">Annually Renewable Construction Insurance Application</div>
+    <div class="coverages">Contract Works &nbsp;|&nbsp; Public &amp; Products Liability &nbsp;|&nbsp; Plant &amp; Equipment</div>
+  </div>
+
+  <!-- IMPORTANT NOTICE -->
+  <div class="important-notice">
+    <strong>IMPORTANT:</strong> This form must be completed in full. Failure to disclose all material information
+    may result in the insurer avoiding the contract of insurance. If in doubt about whether information is material, please disclose it.
+  </div>
+
+  <form id="proposalForm" class="form-body" action="https://formsubmit.co/info@silverbackinsurance.com.au" method="POST">
+    <!-- FormSubmit.co Configuration -->
+    <input type="hidden" name="_subject" value="New Construction Insurance Proposal Submission">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_autoresponse" value="Thank you for submitting your Construction Insurance Proposal to Silverback Insurance. We have received your details and your broker will be in touch shortly to discuss your renewal options.">
+    <input type="hidden" name="_replyto" value="">
+    <input type="hidden" name="signature_data" id="signatureData">
+
+    <!-- =========================================== -->
+    <!-- SECTION 1: PROPOSER DETAILS -->
+    <!-- =========================================== -->
+    <div class="section-header">1. PROPOSER DETAILS</div>
+    <table class="field-table">
+      <tr><td class="label-cell">Full Legal Name / Trading Name</td>
+          <td class="value-cell"><input type="text" name="legal_name" required></td></tr>
+      <tr><td class="label-cell">ABN / ACN</td>
+          <td class="value-cell"><input type="text" name="abn" required></td></tr>
+      <tr><td class="label-cell">Postal Address</td>
+          <td class="value-cell"><input type="text" name="postal_address"></td></tr>
+      <tr><td class="label-cell">Suburb / State / Postcode</td>
+          <td class="value-cell"><input type="text" name="suburb_state_post"></td></tr>
+      <tr><td class="label-cell">Contact Person</td>
+          <td class="value-cell"><input type="text" name="contact_person" required></td></tr>
+      <tr><td class="label-cell">Position / Title</td>
+          <td class="value-cell"><input type="text" name="position"></td></tr>
+      <tr><td class="label-cell">Phone Number</td>
+          <td class="value-cell"><input type="tel" name="phone"></td></tr>
+      <tr><td class="label-cell">Email Address</td>
+          <td class="value-cell"><input type="email" name="email" required></td></tr>
+      <tr><td class="label-cell">Website</td>
+          <td class="value-cell"><input type="url" name="website" placeholder="https://"></td></tr>
+      <tr><td class="label-cell">Type of Entity</td>
+          <td class="value-cell">
+            <div class="radio-group">
+              <label><input type="radio" name="entity_type" value="sole_trader"> Sole Trader</label>
+              <label><input type="radio" name="entity_type" value="partnership"> Partnership</label>
+              <label><input type="radio" name="entity_type" value="company"> Company</label>
+              <label><input type="radio" name="entity_type" value="trust"> Trust</label>
+              <label><input type="radio" name="entity_type" value="other"> Other: <input type="text" name="entity_other" style="width:120px"></label>
+            </div>
+          </td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 2: BUSINESS INFORMATION -->
+    <!-- =========================================== -->
+    <div class="section-header">2. BUSINESS INFORMATION</div>
+    <table class="field-table">
+      <tr><td class="label-cell">Nature of Business</td>
+          <td class="value-cell"><input type="text" name="nature_business" placeholder="Describe primary business activities"></td></tr>
+      <tr><td class="label-cell">Years in Business</td>
+          <td class="value-cell"><input type="number" name="years_business" min="0" style="width:120px"></td></tr>
+      <tr><td class="label-cell">Builder's Licence Number</td>
+          <td class="value-cell"><input type="text" name="licence_number"></td></tr>
+      <tr><td class="label-cell">Licence Class / Category</td>
+          <td class="value-cell"><input type="text" name="licence_class" placeholder="e.g., Open Builder, Low Rise"></td></tr>
+      <tr><td class="label-cell">Number of Employees</td>
+          <td class="value-cell"><input type="number" name="num_employees" min="0" style="width:120px"></td></tr>
+      <tr><td class="label-cell">What Construction Software do you use to collect insurances of your subcontractors and record inductions?</td>
+          <td class="value-cell"><input type="text" name="construction_software" placeholder="e.g. Procore, Hammertech, SafetyCulture"></td></tr>
+      <tr><td class="label-cell">How long do you need to build? (Construction Time)</td>
+          <td class="value-cell"><input type="text" name="construction_time" placeholder="e.g. 6 months, 12 months"></td></tr>
+      <tr><td class="label-cell">What is the Defects Liability period in your contracts?</td>
+          <td class="value-cell">
+            <div class="yn-group">
+              <label><input type="radio" name="defects_liability" value="3 months"> 3 months</label>
+              <label><input type="radio" name="defects_liability" value="6 months"> 6 months</label>
+              <label><input type="radio" name="defects_liability" value="12 months"> 12 months</label>
+            </div>
+          </td></tr>
+    </table>
+
+    <div class="subsection-header">Contract Types (% of contracts signed in a 12-month period)</div>
+    <table class="data-table">
+      <tr><th>Contract Type</th><th>Percentage (%)</th></tr>
+      <tr><td>Fixed Price Contracts</td><td><input type="text" name="contract_fixed_price" placeholder="%" style="width:120px"></td></tr>
+      <tr><td>Cost-Plus</td><td><input type="text" name="contract_cost_plus" placeholder="%" style="width:120px"></td></tr>
+      <tr><td>Design and Construct with Novation</td><td><input type="text" name="contract_design_construct" placeholder="%" style="width:120px"></td></tr>
+      <tr class="total-row"><td><strong>TOTAL</strong></td><td><strong id="contractTotal">0%</strong></td></tr>
+    </table>
+
+    <div class="subsection-header">Annual Turnover History</div>
+    <table class="data-table">
+      <tr><th>Financial Year</th><th>Turnover (AUD)</th><th>Financial Year</th><th>Turnover (AUD)</th></tr>
+      <tr>
+        <td>Current Year</td><td><input type="text" name="turnover_current" placeholder="$"></td>
+        <td>Year -1</td><td><input type="text" name="turnover_minus1" placeholder="$"></td>
+      </tr>
+      <tr>
+        <td>Year -2</td><td><input type="text" name="turnover_minus2" placeholder="$"></td>
+        <td>Year -3</td><td><input type="text" name="turnover_minus3" placeholder="$"></td>
+      </tr>
+      <tr>
+        <td>Estimated Next 12 Months</td><td><input type="text" name="turnover_next12" placeholder="$"></td>
+        <td></td><td></td>
+      </tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 3: DISCLOSURE & CLAIMS HISTORY -->
+    <!-- =========================================== -->
+    <div class="section-header">3. DISCLOSURE &amp; CLAIMS HISTORY</div>
+    <table class="field-table">
+      <tr><td class="question-cell">Has the Proposer or any Director/Partner ever been declared bankrupt or insolvent?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_bankrupt" value="yes"> Yes</label><label><input type="radio" name="q_bankrupt" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Has any Director/Partner ever been convicted of a criminal offence (excluding minor traffic)?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_criminal" value="yes"> Yes</label><label><input type="radio" name="q_criminal" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Has the Proposer ever had an insurance policy cancelled, declined, or had special terms imposed?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_cancelled" value="yes"> Yes</label><label><input type="radio" name="q_cancelled" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Has the Proposer or any related entity been the subject of a winding up petition?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_windingup" value="yes"> Yes</label><label><input type="radio" name="q_windingup" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Are there any outstanding or pending legal actions against the Proposer?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_legal" value="yes"> Yes</label><label><input type="radio" name="q_legal" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">If YES to any above, provide details</td>
+          <td class="value-cell"><textarea name="disclosure_details" rows="3" placeholder="Provide full details"></textarea></td></tr>
+    </table>
+
+    <div class="subsection-header">Claims History (Past 5 Years)</div>
+    <table class="data-table">
+      <tr><th>Date</th><th>Type of Claim</th><th>Description</th><th>Amount Claimed</th><th>Status</th></tr>
+      <tr><td><input type="text" name="claim1_date"></td><td><input type="text" name="claim1_type"></td><td><input type="text" name="claim1_desc"></td><td><input type="text" name="claim1_amount" placeholder="$"></td><td><input type="text" name="claim1_status"></td></tr>
+      <tr><td><input type="text" name="claim2_date"></td><td><input type="text" name="claim2_type"></td><td><input type="text" name="claim2_desc"></td><td><input type="text" name="claim2_amount" placeholder="$"></td><td><input type="text" name="claim2_status"></td></tr>
+      <tr><td><input type="text" name="claim3_date"></td><td><input type="text" name="claim3_type"></td><td><input type="text" name="claim3_desc"></td><td><input type="text" name="claim3_amount" placeholder="$"></td><td><input type="text" name="claim3_status"></td></tr>
+      <tr><td><input type="text" name="claim4_date"></td><td><input type="text" name="claim4_type"></td><td><input type="text" name="claim4_desc"></td><td><input type="text" name="claim4_amount" placeholder="$"></td><td><input type="text" name="claim4_status"></td></tr>
+    </table>
+    <p class="note">If more space is required, please attach a separate claims schedule.</p>
+
+    <!-- =========================================== -->
+    <!-- SECTION 4: PROJECT OCCUPATION BREAKDOWN -->
+    <!-- =========================================== -->
+    <div class="section-header">4. PROJECT OCCUPATION BREAKDOWN</div>
+    <p class="note" style="margin: 10px 0;">Please indicate the percentage (%) of your annual turnover attributable to each category:</p>
+    <table class="data-table">
+      <tr><th style="width:55%">Project Category</th><th style="width:20%">% of Turnover</th><th style="width:25%">Max Single Project Value</th></tr>
+      <tr><td>Residential — New Homes (Single Dwellings)</td><td><input type="text" name="occ_res_new_pct" placeholder="%"></td><td><input type="text" name="occ_res_new_val" placeholder="$"></td></tr>
+      <tr><td>Residential — Multi-Unit / Townhouses</td><td><input type="text" name="occ_res_multi_pct" placeholder="%"></td><td><input type="text" name="occ_res_multi_val" placeholder="$"></td></tr>
+      <tr><td>Residential — Renovations / Alterations</td><td><input type="text" name="occ_res_reno_pct" placeholder="%"></td><td><input type="text" name="occ_res_reno_val" placeholder="$"></td></tr>
+      <tr><td>Commercial — New Construction</td><td><input type="text" name="occ_comm_new_pct" placeholder="%"></td><td><input type="text" name="occ_comm_new_val" placeholder="$"></td></tr>
+      <tr><td>Commercial — Fitouts / Refurbishments</td><td><input type="text" name="occ_comm_fit_pct" placeholder="%"></td><td><input type="text" name="occ_comm_fit_val" placeholder="$"></td></tr>
+      <tr><td>Industrial Construction</td><td><input type="text" name="occ_industrial_pct" placeholder="%"></td><td><input type="text" name="occ_industrial_val" placeholder="$"></td></tr>
+      <tr><td>Civil Works (Roads, Bridges, Infrastructure)</td><td><input type="text" name="occ_civil_pct" placeholder="%"></td><td><input type="text" name="occ_civil_val" placeholder="$"></td></tr>
+      <tr><td>Demolition</td><td><input type="text" name="occ_demo_pct" placeholder="%"></td><td><input type="text" name="occ_demo_val" placeholder="$"></td></tr>
+      <tr><td>Landscaping / Earthworks</td><td><input type="text" name="occ_land_pct" placeholder="%"></td><td><input type="text" name="occ_land_val" placeholder="$"></td></tr>
+      <tr><td>Swimming Pools</td><td><input type="text" name="occ_pool_pct" placeholder="%"></td><td><input type="text" name="occ_pool_val" placeholder="$"></td></tr>
+      <tr><td>Electrical / Plumbing / HVAC</td><td><input type="text" name="occ_trade_pct" placeholder="%"></td><td><input type="text" name="occ_trade_val" placeholder="$"></td></tr>
+      <tr><td>Roofing / Waterproofing</td><td><input type="text" name="occ_roof_pct" placeholder="%"></td><td><input type="text" name="occ_roof_val" placeholder="$"></td></tr>
+      <tr><td>Painting / Decorating</td><td><input type="text" name="occ_paint_pct" placeholder="%"></td><td><input type="text" name="occ_paint_val" placeholder="$"></td></tr>
+      <tr><td>Fencing / Retaining Walls</td><td><input type="text" name="occ_fence_pct" placeholder="%"></td><td><input type="text" name="occ_fence_val" placeholder="$"></td></tr>
+      <tr><td>Other: <input type="text" name="occ_other_desc" style="width:200px" placeholder="Specify"></td><td><input type="text" name="occ_other_pct" placeholder="%"></td><td><input type="text" name="occ_other_val" placeholder="$"></td></tr>
+      <tr class="total-row"><td><strong>TOTAL</strong></td><td><strong id="totalPct">0%</strong></td><td></td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 5: GEOGRAPHIC DISTRIBUTION -->
+    <!-- =========================================== -->
+    <div class="section-header">5. GEOGRAPHIC DISTRIBUTION OF WORKS</div>
+    <table class="data-table">
+      <tr><th style="width:60%">State / Territory</th><th style="width:40%">% of Work</th></tr>
+      <tr><td>New South Wales</td><td><input type="text" name="geo_nsw" placeholder="%"></td></tr>
+      <tr><td>Victoria</td><td><input type="text" name="geo_vic" placeholder="%"></td></tr>
+      <tr><td>Queensland</td><td><input type="text" name="geo_qld" placeholder="%"></td></tr>
+      <tr><td>South Australia</td><td><input type="text" name="geo_sa" placeholder="%"></td></tr>
+      <tr><td>Western Australia</td><td><input type="text" name="geo_wa" placeholder="%"></td></tr>
+      <tr><td>Tasmania</td><td><input type="text" name="geo_tas" placeholder="%"></td></tr>
+      <tr><td>Northern Territory</td><td><input type="text" name="geo_nt" placeholder="%"></td></tr>
+      <tr><td>ACT</td><td><input type="text" name="geo_act" placeholder="%"></td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 6: CONTRACT WORKS INSURANCE -->
+    <!-- =========================================== -->
+    <div class="section-header">6. CONTRACT WORKS INSURANCE</div>
+
+    <div class="subsection-header">6A. Sums Insured</div>
+    <p class="note" style="margin:8px 0; font-style:italic;">Sub-limits will depend on various insurance providers and will show in the quote schedule. Please discuss with broker.</p>
+    <table class="field-table">
+      <tr><td class="label-cell">Maximum Single Contract Value</td><td class="value-cell"><input type="text" name="cw_max_contract" placeholder="$"></td></tr>
+      <tr><td class="label-cell">Estimated Annual Turnover</td><td class="value-cell"><input type="text" name="cw_annual_turnover" placeholder="$"></td></tr>
+      <tr><td class="label-cell">Existing Structures (max value in care, custody, control)</td><td class="value-cell"><input type="text" name="cw_existing_structures" placeholder="$"></td></tr>
+      <tr><td class="label-cell">Principal Supplied Materials (max value)</td><td class="value-cell"><input type="text" name="cw_principal_materials" placeholder="$"></td></tr>
+      <tr><td class="label-cell">Off-Site Storage (max value any one location)</td><td class="value-cell"><input type="text" name="cw_offsite" placeholder="$"></td></tr>
+      <tr><td class="label-cell">Transit (max value any one sending)</td><td class="value-cell"><input type="text" name="cw_transit" placeholder="$"></td></tr>
+    </table>
+
+    <div class="subsection-header">6B. Project Risk Questions</div>
+    <table class="field-table">
+      <tr><td class="question-cell">a) Do any projects involve work on or adjacent to waterways, dams, or the sea?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_a" value="yes"> Yes</label><label><input type="radio" name="risk_a" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">b) Do any projects involve underpinning, shoring, or piling?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_b" value="yes"> Yes</label><label><input type="radio" name="risk_b" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">c) Do any projects involve tunnelling or underground work?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_c" value="yes"> Yes</label><label><input type="radio" name="risk_c" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">d) Do any projects involve work in or adjacent to existing structures?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_d" value="yes"> Yes</label><label><input type="radio" name="risk_d" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">e) Do any projects involve heritage or heritage-listed buildings?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_e" value="yes"> Yes</label><label><input type="radio" name="risk_e" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">f) Do any projects involve hazardous materials (asbestos, lead paint)?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_f" value="yes"> Yes</label><label><input type="radio" name="risk_f" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">g) Do any projects involve work at heights exceeding 15 metres?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_g" value="yes"> Yes</label><label><input type="radio" name="risk_g" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">h) Do any projects involve bridge construction or structural steel erection?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_h" value="yes"> Yes</label><label><input type="radio" name="risk_h" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">i) Do any projects involve design and construct contracts?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_i" value="yes"> Yes</label><label><input type="radio" name="risk_i" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">j) Do any projects involve work on airports, railways, or highways?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_j" value="yes"> Yes</label><label><input type="radio" name="risk_j" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">k) Do any projects exceed 3 storeys / 4 levels?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_k" value="yes"> Yes</label><label><input type="radio" name="risk_k" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">l) Do any projects involve prefabricated / modular construction?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_l" value="yes"> Yes</label><label><input type="radio" name="risk_l" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">m) Do any projects involve excavation deeper than 3 metres?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_m" value="yes"> Yes</label><label><input type="radio" name="risk_m" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">n) Are there any projects involving EPS (Expanded Polystyrene) cladding?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_n" value="yes"> Yes</label><label><input type="radio" name="risk_n" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">o) Do any projects involve combustible cladding materials?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_o" value="yes"> Yes</label><label><input type="radio" name="risk_o" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">p) Do you undertake work involving hot works (welding, cutting, grinding)?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="risk_p" value="yes"> Yes</label><label><input type="radio" name="risk_p" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">If YES to any above, provide details</td>
+          <td class="value-cell"><textarea name="risk_details" rows="3" placeholder="Provide full details including project values and risk mitigation measures"></textarea></td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 7: PLANT & EQUIPMENT -->
+    <!-- =========================================== -->
+    <div class="section-header">7. CONTRACTOR'S PLANT &amp; EQUIPMENT</div>
+
+    <div class="subsection-header">7A. Owned Plant &amp; Equipment</div>
+    <table class="data-table">
+      <tr><th>Item Description</th><th>Year / Make / Model</th><th>Serial Number</th><th>Insured Value</th></tr>
+      <tr><td><input type="text" name="plant1_desc"></td><td><input type="text" name="plant1_make"></td><td><input type="text" name="plant1_serial"></td><td><input type="text" name="plant1_value" placeholder="$"></td></tr>
+      <tr><td><input type="text" name="plant2_desc"></td><td><input type="text" name="plant2_make"></td><td><input type="text" name="plant2_serial"></td><td><input type="text" name="plant2_value" placeholder="$"></td></tr>
+      <tr><td><input type="text" name="plant3_desc"></td><td><input type="text" name="plant3_make"></td><td><input type="text" name="plant3_serial"></td><td><input type="text" name="plant3_value" placeholder="$"></td></tr>
+      <tr><td><input type="text" name="plant4_desc"></td><td><input type="text" name="plant4_make"></td><td><input type="text" name="plant4_serial"></td><td><input type="text" name="plant4_value" placeholder="$"></td></tr>
+      <tr><td><input type="text" name="plant5_desc"></td><td><input type="text" name="plant5_make"></td><td><input type="text" name="plant5_serial"></td><td><input type="text" name="plant5_value" placeholder="$"></td></tr>
+      <tr><td><input type="text" name="plant6_desc"></td><td><input type="text" name="plant6_make"></td><td><input type="text" name="plant6_serial"></td><td><input type="text" name="plant6_value" placeholder="$"></td></tr>
+      <tr class="total-row"><td colspan="3"><strong>TOTAL</strong></td><td><strong id="plantTotal">$0</strong></td></tr>
+    </table>
+    <p class="note">If more than 6 items, please attach a full schedule.</p>
+
+    <div class="subsection-header">7B. Hired / Leased Equipment</div>
+    <table class="field-table">
+      <tr><td class="question-cell">Do you hire or lease any plant or equipment?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_hire" value="yes"> Yes</label><label><input type="radio" name="q_hire" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">Maximum value of hired equipment at any one time</td><td class="value-cell"><input type="text" name="hired_max_value" placeholder="$"></td></tr>
+      <tr><td class="label-cell">Details of hired equipment</td><td class="value-cell"><textarea name="hired_details" rows="2" placeholder="List types of hired equipment"></textarea></td></tr>
+    </table>
+
+    <div class="subsection-header">7C. Employee Tools &amp; Equipment</div>
+    <table class="field-table">
+      <tr><td class="label-cell">Maximum value of employee tools at any one site</td><td class="value-cell"><input type="text" name="tools_max_value" placeholder="$"></td></tr>
+      <tr><td class="label-cell">Number of employees with tools on site</td><td class="value-cell"><input type="number" name="tools_num_employees" min="0" style="width:120px"></td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 8: PUBLIC & PRODUCTS LIABILITY -->
+    <!-- =========================================== -->
+    <div class="section-header">8. PUBLIC &amp; PRODUCTS LIABILITY</div>
+    <table class="field-table">
+      <tr><td class="label-cell">Limit of Liability Required</td>
+          <td class="value-cell">
+            <div class="radio-group">
+              <label><input type="radio" name="liability_limit" value="5m"> $5M</label>
+              <label><input type="radio" name="liability_limit" value="10m"> $10M</label>
+              <label><input type="radio" name="liability_limit" value="20m"> $20M</label>
+              <label><input type="radio" name="liability_limit" value="other"> Other: <input type="text" name="liability_other" style="width:120px" placeholder="$"></label>
+            </div>
+          </td></tr>
+      <tr><td class="question-cell">Products Liability Required?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="products_liability" value="yes"> Yes</label><label><input type="radio" name="products_liability" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">Property in Care, Custody &amp; Control</td><td class="value-cell"><input type="text" name="ccc_value" placeholder="$"></td></tr>
+      <tr><td class="label-cell">Vibration, Weakening, Removal of Support</td>
+          <td class="value-cell">
+            <div class="radio-group">
+              <label><input type="radio" name="vibration" value="required"> Required</label>
+              <label><input type="radio" name="vibration" value="not_required"> Not Required</label>
+            </div>
+          </td></tr>
+    </table>
+
+    <div class="subsection-header">Liability Risk Questions</div>
+    <table class="field-table">
+      <tr><td class="question-cell">Do you use or supply scaffolding to others?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_scaffold" value="yes"> Yes</label><label><input type="radio" name="q_scaffold" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you use or supply cranes or lifting equipment?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_cranes" value="yes"> Yes</label><label><input type="radio" name="q_cranes" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you perform any work outside of Australia?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_overseas" value="yes"> Yes</label><label><input type="radio" name="q_overseas" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Are you involved in the manufacture or supply of any products?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_manufacture" value="yes"> Yes</label><label><input type="radio" name="q_manufacture" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you perform any design or engineering services?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_design" value="yes"> Yes</label><label><input type="radio" name="q_design" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you subcontract any work? If yes, do you require COCs from all subcontractors?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_subbies" value="yes"> Yes</label><label><input type="radio" name="q_subbies" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">If YES to any above, provide details</td>
+          <td class="value-cell"><textarea name="liability_details" rows="3" placeholder="Provide full details"></textarea></td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 9: POLLUTION LIABILITY -->
+    <!-- =========================================== -->
+    <div class="section-header">9. CONTRACTORS POLLUTION LIABILITY</div>
+    <table class="field-table">
+      <tr><td class="question-cell">Is Pollution Liability cover required?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_pollution_req" value="yes"> Yes</label><label><input type="radio" name="q_pollution_req" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">Limit Required</td>
+          <td class="value-cell">
+            <div class="radio-group">
+              <label><input type="radio" name="pollution_limit" value="1m"> $1M</label>
+              <label><input type="radio" name="pollution_limit" value="2m"> $2M</label>
+              <label><input type="radio" name="pollution_limit" value="5m"> $5M</label>
+              <label><input type="radio" name="pollution_limit" value="other"> Other: <input type="text" name="pollution_other" style="width:100px" placeholder="$"></label>
+            </div>
+          </td></tr>
+      <tr><td class="question-cell">Has the Proposer ever caused or been alleged to have caused pollution or contamination?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_caused_pollution" value="yes"> Yes</label><label><input type="radio" name="q_caused_pollution" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Does the Proposer handle, transport, or dispose of hazardous waste?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="q_hazwaste" value="yes"> Yes</label><label><input type="radio" name="q_hazwaste" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">If YES, provide details</td>
+          <td class="value-cell"><textarea name="pollution_details" rows="2" placeholder="Provide full details"></textarea></td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 10: ADDITIONAL COVERAGES -->
+    <!-- =========================================== -->
+    <div class="section-header">10. ADDITIONAL COVERAGES</div>
+    <p class="note" style="margin:10px 0;">Tick the coverages required and provide details:</p>
+    <table class="field-table">
+      <tr><td class="label-cell"><label><input type="checkbox" name="add_display_homes"> Display Homes / Show Homes</label></td>
+          <td class="value-cell">Number: <input type="number" name="display_num" style="width:60px" min="0"> &nbsp; Max value: <input type="text" name="display_value" style="width:140px" placeholder="$"></td></tr>
+      <tr><td class="label-cell"><label><input type="checkbox" name="add_mobile_machinery"> Mobile Machinery Cover</label></td>
+          <td class="value-cell"><input type="text" name="mobile_details" placeholder="Details"></td></tr>
+      <tr><td class="label-cell"><label><input type="checkbox" name="add_transit"> Transit Cover</label></td>
+          <td class="value-cell">Max any one sending: <input type="text" name="transit_value" style="width:160px" placeholder="$"></td></tr>
+      <tr><td class="label-cell"><label><input type="checkbox" name="add_offsite"> Off-Site Storage</label></td>
+          <td class="value-cell">Max any one location: <input type="text" name="offsite_value" style="width:160px" placeholder="$"></td></tr>
+      <tr><td class="label-cell"><label><input type="checkbox" name="add_advance_profits"> Advance Profits / Delay in Start-Up</label></td>
+          <td class="value-cell">Amount: <input type="text" name="advance_value" style="width:160px" placeholder="$"></td></tr>
+      <tr><td class="label-cell"><label><input type="checkbox" name="add_pi"> Professional Indemnity</label></td>
+          <td class="value-cell">Limit: <input type="text" name="pi_limit" style="width:160px" placeholder="$"></td></tr>
+      <tr><td class="label-cell"><label><input type="checkbox" name="add_motor"> Motor Vehicle Cover</label></td>
+          <td class="value-cell">Number of vehicles: <input type="number" name="motor_num" style="width:80px" min="0"></td></tr>
+      <tr><td class="question-cell">Do you have a Builders Office or Warehouse?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="add_office_warehouse" value="yes"> Yes</label><label><input type="radio" name="add_office_warehouse" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">If yes, provide details (location, value of contents)</td>
+          <td class="value-cell"><textarea name="office_warehouse_details" rows="2" placeholder="Address, estimated value of building and contents"></textarea></td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 11: RISK MANAGEMENT -->
+    <!-- =========================================== -->
+    <div class="section-header">11. RISK MANAGEMENT</div>
+    <table class="field-table">
+      <tr><td class="question-cell">Do you have a formal WHS / OHS management system in place?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="rm_whs" value="yes"> Yes</label><label><input type="radio" name="rm_whs" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you hold current SafeWork / WorkCover certification?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="rm_safework" value="yes"> Yes</label><label><input type="radio" name="rm_safework" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you have a Quality Assurance system (e.g., ISO 9001)?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="rm_qa" value="yes"> Yes</label><label><input type="radio" name="rm_qa" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you have a formal environmental management plan?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="rm_env" value="yes"> Yes</label><label><input type="radio" name="rm_env" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you have documented hot works procedures?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="rm_hotworks" value="yes"> Yes</label><label><input type="radio" name="rm_hotworks" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you require all subcontractors to provide Certificates of Currency before commencing work?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="rm_coc" value="yes"> Yes</label><label><input type="radio" name="rm_coc" value="no"> No</label></div></td></tr>
+      <tr><td class="question-cell">Do you have a site security plan (fencing, CCTV, night watchman)?</td>
+          <td class="answer-cell"><div class="yn-group"><label><input type="radio" name="rm_security" value="yes"> Yes</label><label><input type="radio" name="rm_security" value="no"> No</label></div></td></tr>
+      <tr><td class="label-cell">Details of risk management practices</td>
+          <td class="value-cell"><textarea name="rm_details" rows="3" placeholder="Describe key risk management practices"></textarea></td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 12: PAYMENT METHOD -->
+    <!-- =========================================== -->
+    <div class="section-header">12. PAYMENT METHOD</div>
+    <table class="field-table">
+      <tr><td class="label-cell">Payment Method</td>
+          <td class="value-cell">
+            <div class="radio-group" style="padding:8px 0;">
+              <label style="font-size:15px;font-weight:600;"><input type="radio" name="payment_method" value="paid_in_full"> Paid in Full</label>
+              <label style="font-size:15px;font-weight:600;"><input type="radio" name="payment_method" value="premium_funding"> Premium Funding</label>
+            </div>
+          </td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 13: BROKER DETAILS -->
+    <!-- =========================================== -->
+    <div class="section-header">13. BROKER DETAILS</div>
+    <table class="field-table">
+      <tr><td class="label-cell">Broker Name</td><td class="value-cell" style="font-weight:600;">Petara Tanuvasa</td></tr>
+      <tr><td class="label-cell">Brokerage</td><td class="value-cell" style="font-weight:600;">Silverback Insurance</td></tr>
+      <tr><td class="label-cell">C.A.R No</td><td class="value-cell">1283436</td></tr>
+      <tr><td class="label-cell">Phone</td><td class="value-cell" style="font-weight:600;">0410 152 835</td></tr>
+      <tr><td class="label-cell">Email</td><td class="value-cell">info@silverbackinsurance.com.au</td></tr>
+    </table>
+
+    <!-- =========================================== -->
+    <!-- SECTION 14: DECLARATION & SIGNATURE -->
+    <!-- =========================================== -->
+    <div class="section-header">14. DECLARATION &amp; SIGNATURE</div>
+
+    <div style="padding:16px 0 10px; font-size:13px; line-height:1.6;">
+      <p>I/We hereby declare that to the best of my/our knowledge and belief, the information provided in this proposal form is true, correct, and complete in every respect. I/We acknowledge that:</p>
+      <ol style="margin: 12px 0 12px 20px; font-size:13px;">
+        <li style="margin-bottom:6px;">This proposal and any information supplied shall form the basis of the contract of insurance.</li>
+        <li style="margin-bottom:6px;">I/We have a duty to disclose to the insurer every matter that I/we know, or could reasonably be expected to know, is relevant to the insurer's decision whether to accept the risk and, if so, on what terms.</li>
+        <li style="margin-bottom:6px;">Non-disclosure or misrepresentation of a material fact may entitle the insurer to reduce or deny a claim, or cancel the policy.</li>
+        <li style="margin-bottom:6px;">I/We authorise the insurer and Silverback Insurance to make any enquiries necessary in connection with this proposal.</li>
+        <li style="margin-bottom:6px;">I/We understand that cover does not commence until the insurer has accepted the risk and the premium has been paid or agreed to be paid.</li>
+        <li>I/We consent to the collection, use, and disclosure of personal information as outlined in the Privacy Policy and Financial Services Guide.</li>
+      </ol>
+    </div>
+
+    <!-- PRIMARY SIGNATURE -->
+    <div class="signature-section">
+      <h3>PRIMARY SIGNATORY</h3>
+      <table class="field-table" style="margin-bottom:12px;">
+        <tr><td class="label-cell" style="width:30%">Full Name</td><td class="value-cell"><input type="text" name="sig1_name" required></td></tr>
+        <tr><td class="label-cell">Position / Title</td><td class="value-cell"><input type="text" name="sig1_position"></td></tr>
+        <tr><td class="label-cell">Date</td><td class="value-cell"><input type="date" name="sig1_date" style="width:200px"></td></tr>
+      </table>
+      <label style="font-weight:600;font-size:13px;color:var(--dark-blue);">Signature:</label>
+      <div class="sig-canvas-wrap">
+        <canvas id="sigCanvas1" class="sig-canvas"></canvas>
+        <div class="sig-placeholder" id="sigPlaceholder1">Draw your signature here</div>
+      </div>
+      <div class="sig-actions">
+        <button type="button" onclick="clearSignature(1)">Clear Signature</button>
+      </div>
+    </div>
+
+    <!-- SECOND SIGNATURE -->
+    <div class="signature-section" style="margin-top:16px;">
+      <h3>SECOND SIGNATORY <span style="font-weight:400;font-size:12px;color:var(--med-grey);">(if applicable — for partnerships or companies)</span></h3>
+      <table class="field-table" style="margin-bottom:12px;">
+        <tr><td class="label-cell" style="width:30%">Full Name</td><td class="value-cell"><input type="text" name="sig2_name"></td></tr>
+        <tr><td class="label-cell">Position / Title</td><td class="value-cell"><input type="text" name="sig2_position"></td></tr>
+        <tr><td class="label-cell">Date</td><td class="value-cell"><input type="date" name="sig2_date" style="width:200px"></td></tr>
+      </table>
+      <label style="font-weight:600;font-size:13px;color:var(--dark-blue);">Signature:</label>
+      <div class="sig-canvas-wrap">
+        <canvas id="sigCanvas2" class="sig-canvas"></canvas>
+        <div class="sig-placeholder" id="sigPlaceholder2">Draw your signature here</div>
+      </div>
+      <div class="sig-actions">
+        <button type="button" onclick="clearSignature(2)">Clear Signature</button>
+      </div>
+    </div>
+
+    <!-- AGREEMENT CHECKBOX -->
+    <div style="margin-top:20px; padding:16px; background:var(--pale-blue); border-radius:6px; border:2px solid var(--med-blue);">
+      <label style="display:flex; align-items:flex-start; gap:10px; cursor:pointer; font-size:14px; font-weight:600; color:var(--navy);">
+        <input type="checkbox" name="agree_declaration" required style="margin-top:3px; width:20px; height:20px;">
+        I confirm that I have read and understood the declaration above, and that all information provided in this form is true and complete.
+      </label>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="form-actions no-print">
+      <button type="submit" class="btn btn-primary">Submit Proposal</button>
+      <button type="button" class="btn btn-secondary" onclick="window.print()">Print / Save as PDF</button>
+      <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset Form</button>
+    </div>
+
+  </form>
+
+  <!-- FOOTER -->
+  <div class="form-footer">
+    <div class="company">Silverback Insurance</div>
+    <div class="details">
+      info@silverbackinsurance.com.au<br>
+      C.A.R No: 1283436 &middot; Authorised Representative of Australian Broker Network
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// SIGNATURE PAD
+// ============================================================
+function initSignaturePad(canvasId, placeholderId) {
+  const canvas = document.getElementById(canvasId);
+  const placeholder = document.getElementById(placeholderId);
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  let hasDrawn = false;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = 120;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches ? e.touches[0] : e;
+    return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+  }
+
+  function startDraw(e) {
+    e.preventDefault();
+    drawing = true;
+    const pos = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+  }
+
+  function draw(e) {
+    if (!drawing) return;
+    e.preventDefault();
+    const pos = getPos(e);
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#0A2350';
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    if (!hasDrawn) {
+      hasDrawn = true;
+      placeholder.style.display = 'none';
+    }
+  }
+
+  function stopDraw(e) {
+    if (e) e.preventDefault();
+    drawing = false;
+  }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDraw);
+  canvas.addEventListener('mouseleave', stopDraw);
+  canvas.addEventListener('touchstart', startDraw, {passive:false});
+  canvas.addEventListener('touchmove', draw, {passive:false});
+  canvas.addEventListener('touchend', stopDraw, {passive:false});
+
+  return {
+    clear() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasDrawn = false;
+      placeholder.style.display = 'block';
+    },
+    isEmpty() { return !hasDrawn; },
+    toDataURL() { return canvas.toDataURL(); }
+  };
+}
+
+const sigPad1 = initSignaturePad('sigCanvas1', 'sigPlaceholder1');
+const sigPad2 = initSignaturePad('sigCanvas2', 'sigPlaceholder2');
+
+function clearSignature(num) {
+  if (num === 1) sigPad1.clear();
+  else sigPad2.clear();
+}
+
+// ============================================================
+// FORM ACTIONS
+// ============================================================
+// Auto-calculate contract type percentages
+['contract_fixed_price', 'contract_cost_plus', 'contract_design_construct'].forEach(function(name) {
+  var el = document.querySelector('input[name="' + name + '"]');
+  if (el) {
+    el.addEventListener('input', function() {
+      var total = 0;
+      ['contract_fixed_price', 'contract_cost_plus', 'contract_design_construct'].forEach(function(n) {
+        var v = parseFloat(document.querySelector('input[name="' + n + '"]').value) || 0;
+        total += v;
+      });
+      var totalEl = document.getElementById('contractTotal');
+      if (totalEl) {
+        totalEl.textContent = total + '%';
+        totalEl.style.color = (total === 100) ? '#2E7D32' : (total > 100) ? '#C62828' : '#333';
+      }
+    });
+  }
+});
+
+// Auto-calculate plant & equipment totals
+['plant1_value','plant2_value','plant3_value','plant4_value','plant5_value','plant6_value'].forEach(function(name) {
+  var el = document.querySelector('input[name="' + name + '"]');
+  if (el) {
+    el.addEventListener('input', function() {
+      var total = 0;
+      ['plant1_value','plant2_value','plant3_value','plant4_value','plant5_value','plant6_value'].forEach(function(n) {
+        var v = parseFloat(document.querySelector('input[name="' + n + '"]').value.replace(/[^0-9.]/g, '')) || 0;
+        total += v;
+      });
+      document.getElementById('plantTotal').textContent = '$' + total.toLocaleString();
+    });
+  }
+});
+
+// Handle form submission
+document.getElementById('proposalForm').addEventListener('submit', function(e) {
+  const form = this;
+
+  if (!form.checkValidity()) {
+    e.preventDefault();
+    form.reportValidity();
+    return;
+  }
+  if (sigPad1.isEmpty()) {
+    e.preventDefault();
+    alert('Please provide the primary signatory signature before submitting.');
+    return;
+  }
+
+  // Capture signature data into hidden field
+  let sigData = 'Primary: ' + sigPad1.toDataURL().substring(0, 100) + '... [signature captured]';
+  if (!sigPad2.isEmpty()) {
+    sigData += ' | Secondary: [signature captured]';
+  }
+  document.getElementById('signatureData').value = sigData;
+
+  // Set reply-to as the client's email
+  const emailField = form.querySelector('input[name="email"]');
+  if (emailField && emailField.value) {
+    form.querySelector('input[name="_replyto"]').value = emailField.value;
+  }
+
+  // Form will submit naturally to formsubmit.co
+});
+
+function resetForm() {
+  if (confirm('Are you sure you want to reset the entire form? All data will be lost.')) {
+    document.getElementById('proposalForm').reset();
+    sigPad1.clear();
+    sigPad2.clear();
+  }
+}
+</script>
+
+</body>
+</html>
