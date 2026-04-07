@@ -152,7 +152,7 @@
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Years in Business</label>
+          <label class="form-label">YHars in Business</label>
           <select name="years_in_business">
             <option value="">Select</option>
             <option value="0-2">0â2 years</option>
@@ -358,10 +358,6 @@
           <tr><td class="label-cell">Demolition</td><td><div class="pct-input"><input type="number" name="proj_demolition" min="0" max="100" placeholder="0" class="project-pct"></div></td><td><div class="currency-input"><input type="text" name="proj_demolition_max" placeholder="0.00"></div></td></tr>
           <tr><td class="label-cell">Landscaping / Earthworks</td><td><div class="pct-input"><input type="number" name="proj_landscaping" min="0" max="100" placeholder="0" class="project-pct"></div></td><td><div class="currency-input"><input type="text" name="proj_landscaping_max" placeholder="0.00"></div></td></tr>
           <tr><td class="label-cell">Swimming Pools</td><td><div class="pct-input"><input type="number" name="proj_pools" min="0" max="100" placeholder="0" class="project-pct"></div></td><td><div class="currency-input"><input type="text" name="proj_pools_max" placeholder="0.00"></div></td></tr>
-          <tr><td class="label-cell">Electrical / Plumbing / HVAC</td><td><div class="pct-input"><input type="number" name="proj_electrical" min="0" max="100" placeholder="0" class="project-pct"></div></td><td><div class="currency-input"><input type="text" name="proj_electrical_max" placeholder="0.00"></div></td></tr>
-          <tr><td class="label-cell">Roofing / Waterproofing</td><td><div class="pct-input"><input type="number" name="proj_roofing" min="0" max="100" placeholder="0" class="project-pct"></div></td><td><div class="currency-input"><input type="text" name="proj_roofing_max" placeholder="0.00"></div></td></tr>
-          <tr><td class="label-cell">Painting / Decorating</td><td><div class="pct-input"><input type="number" name="proj_painting" min="0" max="100" placeholder="0" class="project-pct"></div></td><td><div class="currency-input"><input type="text" name="proj_painting_max" placeholder="0.00"></div></td></tr>
-          <tr><td class="label-cell">Fencing / Retaining Walls</td><td><div class="pct-input"><input type="number" name="proj_fencing" min="0" max="100" placeholder="0" class="project-pct"></div></td><td><div class="currency-input"><input type="text" name="proj_fencing_max" placeholder="0.00"></div></td></tr>
           <tr><td class="label-cell">Other: <input type="text" name="proj_other_desc" placeholder="Specify" style="width:130px;display:inline;"></td><td><div class="pct-input"><input type="number" name="proj_other" min="0" max="100" placeholder="0" class="project-pct"></div></td><td><div class="currency-input"><input type="text" name="proj_other_max" placeholder="0.00"></div></td></tr>
           <tr class="total-row"><td>TOTAL</td><td id="projectPctTotal">0%</td><td></td></tr>
         </tbody>
@@ -375,22 +371,176 @@
       <span class="section-number">5</span> Geographic Distribution of Works
     </div>
     <div class="section-body">
-      <table class="data-table compact">
-        <thead>
-          <tr><th>State / Territory</th><th style="width:100px;">% of Work</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="label-cell">New South Wales</td><td><div class="pct-input"><input type="number" name="geo_nsw" min="0" max="100" placeholder="0" class="geo-pct"></div></td></tr>
-          <tr><td class="label-cell">Victoria</td><td><div class="pct-input"><input type="number" name="geo_vic" min="0" max="100" placeholder="0" class="geo-pct"></div></td></tr>
-          <tr><td class="label-cell">Queensland</td><td><div class="pct-input"><input type="number" name="geo_qld" min="0" max="100" placeholder="0" class="geo-pct"></div></td></tr>
-          <tr><td class="label-cell">South Australia</td><td><div class="pct-input"><input type="number" name="geo_sa" min="0" max="100" placeholder="0" class="geo-pct"></div></td></tr>
-          <tr><td class="label-cell">Western Australia</td><td><div class="pct-input"><input type="number" name="geo_wa" min="0" max="100" placeholder="0" class="geo-pct"></div></td></tr>
-          <tr><td class="label-cell">Tasmania</td><td><div class="pct-input"><input type="number" name="geo_tas" min="0" max="100" placeholder="0" class="geo-pct"></div></td></tr>
-          <tr><td class="label-cell">Northern Territory</td><td><div class="pct-input"><input type="number" name="geo_nt" min="0" max="100" placeholder="0" class="geo-pct"></div></td></tr>
-          <tr><td class="label-cell">ACT</td><td><div class="pct-input"><input type="number" name="geo_act" min="0" max="100" placeholder="0" class="geo-pct"></div></td></tr>
-          <tr class="total-row"><td>TOTAL</td><td id="geoPctTotal">0%</td></tr>
-        </tbody>
-      </table>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 2rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;"><label style="font-size:0.85rem;">NSW</label><div class="pct-input" style="width:80px;"><input type="number" name="geo_nsw" min="0" max="100" placeholder="0" class="geo-pct"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;"><label style="font-size:0.85rem;">VIC</label><div class="pct-input" style="width:80px;"><input type="number" name="geo_vic" min="0" max="100" placeholder="0" class="geo-pct"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;"><label style="font-size:0.85rem;">QLD</label><div class="pct-input" style="width:80px;"><input type="number" name="geo_qld" min="0" max="100" placeholder="0" class="geo-pct"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;"><label style="font-size:0.85rem;">SA</label><div class="pct-input" style="width:80px;"><input type="number" name="geo_sa" min="0" max="100" placeholder="0" class="geo-pct"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;"><label style="font-size:0.85rem;">WA</label><div class="pct-input" style="width:80px;"><input type="number" name="geo_wa" min="0" max="100" placeholder="0" class="geo-pct"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;"><label style="font-size:0.85rem;">TAS</label><div class="pct-input" style="width:80px;"><input type="number" name="geo_tas" min="0" max="100" placeholder="0" class="geo-pct"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;"><label style="font-size:0.85rem;">NT</label><div class="pct-input" style="width:80px;"><input type="number" name="geo_nt" min="0" max="100" placeholder="0" class="geo-pct"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;"><label style="font-size:0.85rem;">ACT</label><div class="pct-input" style="width:80px;"><input type="number" name="geo_act" min="0" max="100" placeholder="0" class="geo-pct"></div></div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:0.75rem;padding-top:0.5rem;border-top:2px solid var(--color-primary);font-weight:600;font-size:0.85rem;">
+        <span>TOTAL:&nbsp;</span><span id="geoPctTotal">0%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5A: FORECAST OF WORKS ==================== -->
+  <section class="form-section">
+    <div class="section-header">
+      <span class="section-number">5A</span> Forecast of Works â Builders to Complete
+    </div>
+    <div class="section-body">
+      <p class="subsection-note" style="margin-top:0;margin-bottom:0.5rem;">This section must be completed at least <strong>21 days before your renewal date</strong> so that a quote can be presented 14 days prior.</p>
+
+      <!-- Current Projects On-Hand -->
+      <div class="subsection-header" style="margin-top:1.5rem;">Current Projects On-Hand</div>
+      <div style="overflow-x:auto;">
+        <table class="data-table compact" style="min-width:800px;">
+          <thead>
+            <tr>
+              <th style="width:40px;">#</th>
+              <th>Site Address</th>
+              <th style="width:130px;">Contract Amount</th>
+              <th style="width:140px;">Project Type</th>
+              <th style="width:80px;">Defects Liability (mths)</th>
+              <th style="width:110px;">Est. Start</th>
+              <th style="width:110px;">Est. Completion</th>
+              <th style="width:130px;">Remaining Works</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><input type="text" name="fow_current_address_1" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_amount_1" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_current_type_1"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_current_defects_1" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_current_start_1"></td>
+              <td><input type="date" name="fow_current_end_1"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_remaining_1" placeholder="0.00"></div></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><input type="text" name="fow_current_address_2" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_amount_2" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_current_type_2"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_current_defects_2" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_current_start_2"></td>
+              <td><input type="date" name="fow_current_end_2"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_remaining_2" placeholder="0.00"></div></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><input type="text" name="fow_current_address_3" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_amount_3" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_current_type_3"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_current_defects_3" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_current_start_3"></td>
+              <td><input type="date" name="fow_current_end_3"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_remaining_3" placeholder="0.00"></div></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><input type="text" name="fow_current_address_4" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_amount_4" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_current_type_4"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_current_defects_4" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_current_start_4"></td>
+              <td><input type="date" name="fow_current_end_4"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_remaining_4" placeholder="0.00"></div></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><input type="text" name="fow_current_address_5" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_amount_5" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_current_type_5"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_current_defects_5" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_current_start_5"></td>
+              <td><input type="date" name="fow_current_end_5"></td>
+              <td><div class="currency-input"><input type="text" name="fow_current_remaining_5" placeholder="0.00"></div></td>
+            </tr>
+            <tr class="total-row"><td colspan="2">TOTAL CONTRACT AMOUNT</td><td id="fowCurrentTotal">$0</td><td colspan="5"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Projects to Start in the Next 12 Months -->
+      <div class="subsection-header" style="margin-top:1.5rem;">Projects to Start in the Next 12 Months</div>
+      <div style="overflow-x:auto;">
+        <table class="data-table compact" style="min-width:800px;">
+          <thead>
+            <tr>
+              <th style="width:40px;">#</th>
+              <th>Site Address</th>
+              <th style="width:130px;">Contract Amount</th>
+              <th style="width:140px;">Project Type</th>
+              <th style="width:80px;">Defects Liability (mths)</th>
+              <th style="width:110px;">Est. Start</th>
+              <th style="width:110px;">Est. Completion</th>
+              <th style="width:130px;">Remaining Works</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>6</td>
+              <td><input type="text" name="fow_future_address_6" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_amount_6" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_future_type_6"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_future_defects_6" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_future_start_6"></td>
+              <td><input type="date" name="fow_future_end_6"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_remaining_6" placeholder="0.00"></div></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><input type="text" name="fow_future_address_7" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_amount_7" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_future_type_7"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_future_defects_7" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_future_start_7"></td>
+              <td><input type="date" name="fow_future_end_7"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_remaining_7" placeholder="0.00"></div></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><input type="text" name="fow_future_address_8" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_amount_8" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_future_type_8"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_future_defects_8" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_future_start_8"></td>
+              <td><input type="date" name="fow_future_end_8"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_remaining_8" placeholder="0.00"></div></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><input type="text" name="fow_future_address_9" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_amount_9" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_future_type_9"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_future_defects_9" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_future_start_9"></td>
+              <td><input type="date" name="fow_future_end_9"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_remaining_9" placeholder="0.00"></div></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td><input type="text" name="fow_future_address_10" placeholder="Site address"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_amount_10" placeholder="0.00" class="fow-amount"></div></td>
+              <td><select name="fow_future_type_10"><option value="">Select</option><option>Single Dwelling</option><option>Multi-Development</option><option>Renovation</option><option>Extension</option><option>Commercial</option><option>Other</option></select></td>
+              <td><input type="number" name="fow_future_defects_10" placeholder="â" min="0"></td>
+              <td><input type="date" name="fow_future_start_10"></td>
+              <td><input type="date" name="fow_future_end_10"></td>
+              <td><div class="currency-input"><input type="text" name="fow_future_remaining_10" placeholder="0.00"></div></td>
+            </tr>
+            <tr class="total-row"><td colspan="2">TOTAL CONTRACT AMOUNT</td><td id="fowFutureTotal">$0</td><td colspan="5"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:0.82rem;color:var(--color-text-muted);font-style:italic;margin-top:0.75rem;">If you have more projects than rows provided, please attach a separate schedule.</p>
+
     </div>
   </section>
 
@@ -884,6 +1034,18 @@
       <a href="mailto:info@silverbackinsurance.com.au" style="color:var(--color-secondary);">info@silverbackinsurance.com.au</a>
     </p>
   </div>
+</div>
+
+<!-- Additional Cover CTA -->
+<div style="max-width:800px;margin:2rem auto;padding:1.25rem 1.5rem;background:linear-gradient(135deg, var(--color-primary) 0%, #2a5a9f 100%);border-radius:8px;text-align:center;color:#fff;">
+  <p style="font-size:1.05rem;font-weight:600;margin-bottom:0.5rem;">Increase Your Protection</p>
+  <p style="font-size:0.88rem;opacity:0.92;margin-bottom:1rem;line-height:1.5;">Ask Silverback Insurance about additional covers to strengthen your business protection:</p>
+  <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
+    <span style="background:rgba(255,255,255,0.15);padding:0.4rem 1rem;border-radius:20px;font-size:0.82rem;font-weight:500;">Professional Indemnity</span>
+    <span style="background:rgba(255,255,255,0.15);padding:0.4rem 1rem;border-radius:20px;font-size:0.82rem;font-weight:500;">Management Liability</span>
+    <span style="background:rgba(255,255,255,0.15);padding:0.4rem 1rem;border-radius:20px;font-size:0.82rem;font-weight:500;">Cyber Insurance</span>
+  </div>
+  <p style="font-size:0.82rem;opacity:0.85;margin:0;">Contact Petara Tanuvasa on <a href="tel:0410152835" style="color:#f58220;font-weight:600;">0410 152 835</a> or <a href="mailto:info@silverbackinsurance.com.au" style="color:#f58220;font-weight:600;">info@silverbackinsurance.com.au</a></p>
 </div>
 
 <!-- Footer -->
